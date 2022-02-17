@@ -1,16 +1,20 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_of_life/game/cubit/game_cubit.dart';
+
+const cellSize = 25.0;
 
 class GamePage extends StatelessWidget {
   const GamePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final rowCount = (size.width / cellSize).floor().abs();
+    final columnCount =
+        ((size.height - (kToolbarHeight + 100)) / cellSize).floor().abs();
     return BlocProvider(
-      create: (context) => GameCubit(nX: 25, nY: 25),
+      create: (context) => GameCubit(nX: columnCount, nY: rowCount),
       child: const GamePageView(),
     );
   }
@@ -28,13 +32,6 @@ class GamePageView extends StatelessWidget {
       ),
       body: BlocBuilder<GameCubit, GameState>(
         builder: (context, state) {
-          var cellSize = 10.0;
-          if (Platform.isAndroid || Platform.isIOS) {
-            cellSize = (MediaQuery.of(context).size.width * 0.025).clamp(5, 10);
-          } else {
-            cellSize =
-                (MediaQuery.of(context).size.width * 0.025).clamp(15, 25);
-          }
           return InteractiveViewer(
             constrained: false,
             child: Padding(
@@ -50,6 +47,7 @@ class GamePageView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(1),
                             child: InkWell(
+                              key: Key('cell-$row-$colum'),
                               onTap: () =>
                                   context.read<GameCubit>().activeDeactiveCell(
                                         row: row,
