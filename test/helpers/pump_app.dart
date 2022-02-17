@@ -6,12 +6,15 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:game_of_life/l10n/l10n.dart';
 
+import 'mocks.dart';
+
 extension PumpApp on WidgetTester {
-  Future<void> pumpApp(Widget widget) {
+  Future<void> pumpApp(Widget widget, {BlocBase? bloc}) {
     return pumpWidget(
       MaterialApp(
         localizationsDelegates: const [
@@ -20,6 +23,10 @@ extension PumpApp on WidgetTester {
         ],
         supportedLocales: AppLocalizations.supportedLocales,
         home: widget,
+        // home: BlocProvider(
+        //   create: (context) => bloc ?? MockGameCubit(),
+        //   child: Builder(builder: (context) => widget),
+        // ),
       ),
     );
   }
