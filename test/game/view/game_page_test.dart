@@ -71,10 +71,27 @@ void main() {
           expect(find.byType(SnackBar), findsOneWidget);
         },
       );
+      testWidgets(
+        'setting button',
+        (WidgetTester tester) async {
+          await tester.pumpApp(
+            BlocProvider(
+              create: (context) => gameCubit,
+              child: const GamePageView(),
+            ),
+            bloc: gameCubit,
+          );
+          await tester.tap(find.byIcon(Icons.settings_rounded));
+          await tester.pumpAndSettle();
+
+          expect(find.byType(SnackBar), findsOneWidget);
+        },
+      );
 
       testWidgets(
-        'redo button',
+        'redo button when have more state',
         (WidgetTester tester) async {
+          when(() => gameCubit.canRedo).thenReturn(true);
           await tester.pumpApp(
             BlocProvider(
               create: (context) => gameCubit,
@@ -86,6 +103,26 @@ void main() {
           await tester.pumpAndSettle();
 
           expect(find.byType(SnackBar), findsOneWidget);
+          verify(() => gameCubit.redo()).called(1);
+        },
+      );
+
+      testWidgets(
+        'redo button when not have more state',
+        (WidgetTester tester) async {
+          when(() => gameCubit.canRedo).thenReturn(false);
+          await tester.pumpApp(
+            BlocProvider(
+              create: (context) => gameCubit,
+              child: const GamePageView(),
+            ),
+            bloc: gameCubit,
+          );
+          await tester.tap(find.byIcon(Icons.redo_rounded));
+          await tester.pumpAndSettle();
+
+          expect(find.byType(SnackBar), findsOneWidget);
+          verify(() => gameCubit.stepForward()).called(1);
         },
       );
 
@@ -103,6 +140,7 @@ void main() {
           await tester.pumpAndSettle();
 
           expect(find.byType(SnackBar), findsOneWidget);
+          verify(() => gameCubit.undo()).called(1);
         },
       );
 

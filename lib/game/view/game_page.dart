@@ -27,6 +27,7 @@ class GamePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // TODO(yeikel16): add multilanguage support (ES-EN).
         title: const Text('Game of Life'),
         centerTitle: true,
       ),
@@ -103,12 +104,11 @@ class GamePageView extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  // TODO(yeikel16): implement undo
-                  // context.read<GameCubit>().undo();
+                  context.read<GameCubit>().undo();
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Undo is not implemented yet'),
-                      duration: Duration(seconds: 1),
+                      content: Text('One step back'),
+                      duration: Duration(milliseconds: 500),
                     ),
                   );
                 },
@@ -116,12 +116,15 @@ class GamePageView extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  // TODO(yeikel16): implement redo
-                  // context.read<GameCubit>().redo();
+                  if (context.read<GameCubit>().canRedo) {
+                    context.read<GameCubit>().redo();
+                  } else {
+                    context.read<GameCubit>().stepForward();
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Redo is not implemented yet '),
-                      duration: Duration(seconds: 1),
+                      content: Text('One step forward'),
+                      duration: Duration(milliseconds: 500),
                     ),
                   );
                 },
@@ -138,6 +141,18 @@ class GamePageView extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.info_outline_rounded),
+              ),
+              IconButton(
+                onPressed: () {
+                  // TODO(yeikel16): implement setting page abut the game.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Setting is not implemented yet'),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.settings_rounded),
               ),
             ],
           ),

@@ -97,47 +97,38 @@ void main() {
         build: () => GameCubit(nX: 4, nY: 4),
         seed: () => const GameState(
           board: [
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
             [0, 0, 0, 0],
             [0, 1, 0, 0],
+            [0, 1, 1, 0],
+            [1, 0, 0, 0],
           ],
         ),
         act: (cubit) => cubit.start(),
         expect: () => const <GameState>[
           GameState(
             board: [
-              [0, 1, 0, 0],
-              [0, 1, 0, 0],
               [0, 0, 0, 0],
+              [0, 1, 0, 0],
+              [0, 1, 1, 0],
+              [1, 0, 0, 0]
+            ],
+            isGameStart: true,
+          ),
+          GameState(
+            board: [
+              [0, 0, 0, 0],
+              [0, 1, 1, 0],
+              [1, 1, 1, 0],
               [0, 1, 0, 0]
             ],
             isGameStart: true,
           ),
           GameState(
             board: [
-              [1, 1, 1, 0],
+              [0, 1, 1, 0],
+              [1, 0, 1, 1],
               [1, 0, 0, 1],
-              [1, 1, 1, 0],
-              [0, 0, 0, 0]
-            ],
-            isGameStart: true,
-          ),
-          GameState(
-            board: [
-              [1, 1, 1, 0],
-              [0, 0, 0, 0],
-              [0, 0, 0, 0],
-              [0, 1, 1, 1]
-            ],
-            isGameStart: true,
-          ),
-          GameState(
-            board: [
-              [1, 0, 1, 0],
-              [0, 0, 0, 0],
-              [0, 0, 1, 1],
-              [0, 0, 0, 0]
+              [1, 1, 1, 0]
             ],
             isGameStart: true,
           ),
@@ -187,7 +178,39 @@ void main() {
       );
     });
 
-    // reset should emit a new boeard with all initial state
+    group('stepForward', () {
+      blocTest<GameCubit, GameState>(
+        'should emit the next state',
+        build: () => GameCubit(nX: 3, nY: 3),
+        seed: () => const GameState(
+          board: [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0],
+          ],
+          isGameStart: true,
+        ),
+        act: (cubit) => cubit.stepForward(),
+        expect: () => const <GameState>[
+          GameState(
+            board: [
+              [0, 0, 0],
+              [0, 0, 0],
+              [0, 0, 0]
+            ],
+            isGameStart: true,
+          ),
+          GameState(
+            board: [
+              [0, 0, 0],
+              [0, 0, 0],
+              [0, 0, 0]
+            ],
+          ),
+        ],
+      );
+    });
+
     group('reset', () {
       blocTest<GameCubit, GameState>(
         'should emit the `isGameStart` to false',
