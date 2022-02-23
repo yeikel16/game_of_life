@@ -7,6 +7,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_of_life/app/cubit/locale_cubit.dart';
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LocaleCubit(
-        locale: Locale(Platform.localeName.substring(0, 2)),
+        locale: Locale(kIsWeb ? 'en' : Platform.localeName.substring(0, 2)),
       ),
       child: const AppView(),
     );
