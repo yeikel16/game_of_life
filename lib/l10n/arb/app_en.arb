@@ -1,7 +1,47 @@
 {
-    "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
-    }
+  "@@locale": "en",
+  "gameAppBarTitle": "Game of life",
+  "@gameAppBarTitle": {
+    "description": "Text shown in the AppBar of the game page"
+  },
+  "languageTooltip": "Language",
+  "@languageTooltip": {
+    "description": "Tooltip of the language button"
+  },
+  "playTooltip": "Play",
+  "@playTooltip": {
+    "description": "Tooltip of the play button"
+  },
+  "pauseTooltip": "Pause",
+  "@pauseTooltip": {
+    "description": "Tooltip of the pause button"
+  },
+  "resetTooltip": "Reset",
+  "@resetTooltip": {
+    "description": "Tooltip of the reset button"
+  },
+  "settingsTooltip": "Settings",
+  "@settingsTooltip": {
+    "description": "Tooltip of the settings button"
+  },
+  "informationTooltip": "Information",
+  "@informationTooltip": {
+    "description": "Tooltip of the information button"
+  },
+  "forwardTooltip": "One step forward",
+  "@forwardTooltip": {
+    "description": "Tooltip shown when hovering over the forward button"
+  },
+  "backwardTooltip": "One step backward",
+  "@backwardTooltip": {
+    "description": "Tooltip shown when hovering over the backward button"
+  },
+  "informationNotImplemented": "Information not implemented yet",
+  "@informationNotImplemented": {
+    "description": "Information feature is not implemented yet"
+  },
+  "settingsNotImplemented": "Settings not implemented yet",
+  "@settingsNotImplemented": {
+    "description": "Settings feature is not implemented yet"
+  }
 }

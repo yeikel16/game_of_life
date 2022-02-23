@@ -1,7 +1,47 @@
 {
-    "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
-    }
+  "@@locale": "es",
+  "gameAppBarTitle": "Juego de la vida",
+  "@gameAppBarTitle": {
+    "description": "Texto mostrado en la AppBar de la página principal"
+  },
+  "languageTooltip": "Idioma",
+  "@languageTooltip": {
+    "description": "Texto mostrado en la selección de idioma"
+  },
+  "playTooltip": "Iniciar juego",
+  "@playTooltip": {
+    "description": "Texto del botón de iniciar juego"
+  },
+  "pauseTooltip": "Pausar juego",
+  "@pauseTooltip": {
+    "description": "Texto del botón de pausar juego"
+  },
+  "resetTooltip": "Reiniciar juego",
+  "@resetTooltip": {
+    "description": "Texto del botón de reiniciar juego"
+  },
+  "settingsTooltip": "Configuración",
+  "@settingsTooltip": {
+    "description": "Texto del botón de configuración"
+  },
+  "informationTooltip": "Información",
+  "@informationTooltip": {
+    "description": "Texto del botón de información"
+  },
+  "forwardTooltip": "Un paso adelante",
+  "@forwardTooltip": {
+    "description": "Texto mostrado en el botón de avance"
+  },
+  "backwardTooltip": "Un paso atrás",
+  "@backwardTooltip": {
+    "description": "Texto mostrado en el botón de retroceso"
+  },
+  "informationNotImplemented": "Información no está implementada aún",
+  "@informationNotImplemented": {
+    "description": "Texto mostrado cuando no se ha implementado la caracteristica de Información"
+  },
+  "settingsNotImplemented": "Ajustes no está implementada aún",
+  "@settingsNotImplemented": {
+    "description": "Texto mostrado cuando no se ha implementado la caracteristica de Ajustes"
+  }
 }
