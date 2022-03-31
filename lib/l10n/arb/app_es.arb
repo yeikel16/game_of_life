@@ -36,8 +36,6 @@
   "@backwardTooltip": {
     "description": "Texto mostrado en el botón de retroceso"
   },
-<<<<<<< Updated upstream
-=======
   "gameDescription": " es un autómata celular diseñado por el matemático británico John Horton Conway, en 1970. Es un juego de cero jugadores, con un estado inicial que determinada su evolución, sin requerir intervención adicional.\nEl \"tablero de juego\" está compuesto por cuadrados llamados \"células\", que forman una malla similar a un tablero de ajedrez. Cada célula tiene 8 células \"vecinas\", que son las que están próximas a ella, incluidas las diagonales. Las células tienen dos estados: \"vivas\" o \"muertas\". Cada turno determina el estado de las células y permite predecir el estado de las mismas para el siguiente. Se actualizan simultáneamente a partir de tres simples reglas: ",
   "@gameDescription": {
     "description": "Breve descipcin acerca del juego."
@@ -54,7 +52,6 @@
   "@gameRule3": {
     "description": "Tercera regla del juego."
   },
->>>>>>> Stashed changes
   "informationNotImplemented": "Información no está implementada aún",
   "@informationNotImplemented": {
     "description": "Texto mostrado cuando no se ha implementado la caracteristica de Información"

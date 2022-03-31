@@ -36,25 +36,22 @@
   "@backwardTooltip": {
     "description": "Tooltip shown when hovering over the backward button"
   },
-<<<<<<< Updated upstream
-=======
   "gameDescription": " is a cellular automaton designed by the British mathematician John Horton Conway, in 1970. It is a game with zero players, with an initial state that determines its evolution, without requiring additional intervention.\nThe \"game board\" is made up of squares called \"cells\", which form a mesh similar to a chessboard. Each cell has 8 \"neighboring\" cells, which are the ones that are next to it, including the diagonals. The cells have two states: \"alive\" or \"dead\". Each turn determines the state of the cells and allows you to predict their state for the next one. They are updated simultaneously based on three simple rules: ",
   "@gameDescription": {
     "description": "Brief description about the game."
   },
-  "gameRule1": "\nIf a cell is alive and has two or three neighbors alive, it survives.",
+  "gameRule1": "If a cell is alive and has two or three neighbors alive, it survives.",
   "@gameRule1": {
     "description": "The first game rule."
   },
-  "gameRule2": "\nIf a cell is dead and has three neighbors alive, it is born.",
+  "gameRule2": "If a cell is dead and has three neighbors alive, it is born.",
   "@gameRule2": {
     "description": "The second game rule."
   },
-  "gameRule3": "\nIf a cell is alive and has more than three neighbors alive, it dies.",
+  "gameRule3": "If a cell is alive and has more than three neighbors alive, it dies.",
   "@gameRule3": {
     "description": "The third game rule."
   },
->>>>>>> Stashed changes
   "informationNotImplemented": "Information not implemented yet",
   "@informationNotImplemented": {
     "description": "Information feature is not implemented yet"
