@@ -4,8 +4,6 @@ import 'package:game_of_life/app/cubit/locale_cubit.dart';
 import 'package:game_of_life/game/game.dart';
 import 'package:game_of_life/l10n/l10n.dart';
 
-const cellSize = 25.0;
-
 class GamePage extends StatelessWidget {
   const GamePage({Key? key}) : super(key: key);
 
@@ -60,38 +58,13 @@ class GamePageView extends StatelessWidget {
             constrained: false,
             child: Padding(
               padding: const EdgeInsets.all(4),
-              child: Column(
-                children: [
-                  for (var row = 0; row < state.board.length; row++)
-                    Row(
-                      children: [
-                        for (var colum = 0;
-                            colum < state.board[row].length;
-                            colum++)
-                          Padding(
-                            padding: const EdgeInsets.all(1),
-                            child: InkWell(
-                              key: Key('cell-$row-$colum'),
-                              onTap: () =>
-                                  context.read<GameCubit>().activeDeactiveCell(
-                                        row: row,
-                                        column: colum,
-                                      ),
-                              child: Container(
-                                width: cellSize,
-                                height: cellSize,
-                                decoration: BoxDecoration(
-                                  color: state.board[row][colum] == 0
-                                      ? Colors.white
-                                      : Colors.black,
-                                  border: Border.all(width: 0.5),
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    )
-                ],
+              child: GameBoardWidget(
+                board: state.board,
+                onCellTap: (int row, int colum) =>
+                    context.read<GameCubit>().activeDeactiveCell(
+                          row: row,
+                          column: colum,
+                        ),
               ),
             ),
           );
