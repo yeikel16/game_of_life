@@ -5,6 +5,8 @@ class LocaleState extends Equatable {
 
   final Locale? locale;
 
+  bool get isEn => locale?.languageCode == 'us';
+
   @override
   List<Object?> get props => [locale];
 }

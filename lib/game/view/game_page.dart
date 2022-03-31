@@ -133,15 +133,13 @@ class GamePageView extends StatelessWidget {
               ),
               IconButton(
                 tooltip: l10n.informationTooltip,
-                onPressed: () {
-                  // TODO(yeikel16): implement information page abut the game.
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(l10n.informationNotImplemented),
-                      duration: const Duration(seconds: 1),
-                    ),
-                  );
-                },
+                onPressed: () => Navigator.pushNamed<void>(context, '/info'),
+                // onPressed: () => Navigator.push<void>(
+                //   context,
+                //   MaterialPageRoute<void>(
+                //     builder: (BuildContext context) => const InfoPage(),
+                //   ),
+                // ),
                 icon: const Icon(Icons.info_outline_rounded),
               ),
               IconButton(

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:game_of_life/app/app.dart';
-import 'package:game_of_life/game/cubit/game_cubit.dart';
+import 'package:game_of_life/game/game.dart';
 import 'package:game_of_life/l10n/l10n.dart';
 
 import 'helpers.dart';

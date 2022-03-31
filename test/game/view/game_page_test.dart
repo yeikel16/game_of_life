@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:game_of_life/app/app.dart';
 import 'package:game_of_life/game/game.dart';
+import 'package:game_of_life/info/info.dart';
 import 'package:game_of_life/l10n/l10n.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -49,33 +50,28 @@ void main() {
       expect(find.byType(InteractiveViewer), findsOneWidget);
     });
 
-    testWidgets('actived a cell', (tester) async {
-      await tester.pumpApp(
-        const GamePageView(),
-        gameCubit: gameCubit,
-        localeCubit: localeCubit,
-      );
-
-      await tester.tap(find.byKey(const Key('cell-1-1')));
-
-      verify(() => gameCubit.activeDeactiveCell(row: 1, column: 1)).called(1);
-    });
-
     group('tap in', () {
       testWidgets(
-        'information button',
-        (WidgetTester tester) async {
-          await tester.pumpApp(
-            const GamePageView(),
-            gameCubit: gameCubit,
-            localeCubit: localeCubit,
+        'info button should navegate to `InfoPage`.',
+        (tester) async {
+          await tester.pumpWidget(
+            BlocProvider.value(
+              value: localeCubit,
+              child: const AppView(),
+            ),
           );
+          final materialApp =
+              tester.widget<MaterialApp>(find.byType(MaterialApp));
+
+          expect(materialApp.routes?.length, equals(2));
+
           await tester.tap(find.byIcon(Icons.info_outline_rounded));
           await tester.pumpAndSettle();
 
-          expect(find.byType(SnackBar), findsOneWidget);
+          expect(find.byType(InfoPage), findsOneWidget);
         },
       );
+
       testWidgets(
         'setting button',
         (WidgetTester tester) async {

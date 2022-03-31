@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_of_life/app/cubit/locale_cubit.dart';
 import 'package:game_of_life/game/view/game_page.dart';
+import 'package:game_of_life/info/info.dart';
 import 'package:game_of_life/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -36,6 +37,7 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      key: const Key('key_nav_app'),
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         colorScheme: ColorScheme.fromSwatch(
@@ -45,7 +47,11 @@ class AppView extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: context.select((LocaleCubit cubit) => cubit.state.locale),
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const GamePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const GamePage(),
+        '/info': (context) => const InfoPage(),
+      },
     );
   }
 }
